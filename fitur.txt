@@ -1,0 +1,5 @@
+1.tambah splide
+2.tambah detail movie
+3.tambah komentar
+4.tambah 3d hover di card
+5.
