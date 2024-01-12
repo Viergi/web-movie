@@ -11,7 +11,7 @@ export default function InputSearch() {
   function handleSearch(event) {
     const keyword = searchRef.current.value;
 
-    if (!keyword) return;
+    if (!keyword || keyword.trim() == "") return;
 
     event.preventDefault();
     route.push(`/search/${keyword}`);

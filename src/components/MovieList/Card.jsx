@@ -1,5 +1,6 @@
 "use client";
 
+import { ImageSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,7 +16,7 @@ export default function Card({ title, imageURL, id, releaseDate }) {
     <Link
       onClick={scrollTop}
       href={`/movie/${id}`}
-      className="h-full w-[95%] hover:scale-[1.10] transition-all duration-700"
+      className="h-full w-[95%] hover:-translate-y-4 transition-all duration-300"
     >
       {imageURL ? (
         <Image
@@ -26,8 +27,9 @@ export default function Card({ title, imageURL, id, releaseDate }) {
           className="h-[80%] rounded-lg object-fill bg-slate-600"
         ></Image>
       ) : (
-        <div className="flex justify-center items-center bg-slate-600">
-          Tidak ada Gambar
+        <div className="flex justify-center items-center h-[80%] rounded-lg bg-slate-600">
+          <ImageSquare size={32} color="black" weight="fill" />
+          No Picture
         </div>
       )}
       <h1 className="font-bold truncate pt-2 w-[80%] text-white">{title}</h1>

@@ -1,6 +1,7 @@
 "use client";
 
-import { Star } from "@phosphor-icons/react";
+import { convertUSD } from "@/libs/convert";
+import { ImageSquare, Star } from "@phosphor-icons/react";
 import Image from "next/image";
 
 export default function DetailMovie({ data }) {
@@ -26,7 +27,7 @@ export default function DetailMovie({ data }) {
   }
 
   return (
-    <div className="h-[80%] relative">
+    <div className="h-[80%] w-full relative ">
       <div className="absolute  w-full h-3/4 -bottom-[5.5rem] z-[0] border-t backdrop-blur-sm bg-gradient-to-b from-white/10 to-slate-950 via-slate-950"></div>
       {data.backdrop_path ? (
         <Image
@@ -37,19 +38,28 @@ export default function DetailMovie({ data }) {
           className="absolute top-0 -z-10 object-cover object-[100%,30%] "
         />
       ) : (
-        <div className="w-full h-full flex justify-center items-center bg-slate-300">
-          Tidak ada Gambar
+        <div className="absolute -z-10 left-0 top-0 w-full h-full flex  items-center bg-slate-300">
+          No Picture
         </div>
       )}
-      <div className="absolute left-10 top-10 flex">
-        <Image
-          src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${data.poster_path}`}
-          alt="..."
-          width={500}
-          height={500}
-          className="h-96 w-72"
-        ></Image>
-        <div className="px-10 py-4">
+      <div className="flex w-full relative z-10">
+        <div className="w-[25%] pl-10 pt-10">
+          {data.poster_path ? (
+            <Image
+              src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${data.poster_path}`}
+              alt="..."
+              width={500}
+              height={500}
+              className="h-96 w-72"
+            ></Image>
+          ) : (
+            <div className="h-96 bg-slate-300 flex justify-center items-center ">
+              <ImageSquare size={32} color="black" weight="fill" />
+              No Picture
+            </div>
+          )}
+        </div>
+        <div className="px-10 py-4 pt-10 w-[75%]">
           <div>
             <h1 className="text-2xl font-bold text-white text-shadow">
               {data.release_date.slice(0, 4)}
@@ -66,7 +76,7 @@ export default function DetailMovie({ data }) {
               })}
             </h1>
             <div className="flex items-center gap-1">
-              <h2 className="text-yellow-500 flex">
+              <h2 className="text-yellow-500 flex ">
                 {jumlahBintang.map((_, index) => {
                   return (
                     <Star
@@ -98,7 +108,7 @@ export default function DetailMovie({ data }) {
               <h1 className="pb-5 text-2xl font-bold text-white text-shadow">
                 About Movie
               </h1>
-              <p className="pr-7 text-white text-justify text-shadow">
+              <p className="pr-7 text-white text-justify  h-56 overflow-auto scroll text-shadow">
                 {data.overview}
               </p>
             </div>
@@ -108,7 +118,7 @@ export default function DetailMovie({ data }) {
               </h1>
               <div className="flex ">
                 <h1 className="w-1/2">Release date</h1>
-                <p classname="w-1/2">
+                <p className="w-1/2">
                   : {data.release_date ? data.release_date : "Not Known"}
                 </p>
               </div>
@@ -125,18 +135,20 @@ export default function DetailMovie({ data }) {
                 <h1 className="w-1/2">Production Companies</h1>
                 <p className="w-1/2">
                   :{" "}
-                  {data.production_companies.map((company, index, row) => {
-                    if (index + 1 === row.length) {
-                      return company.name;
-                    }
-                    return `${company.name}, `;
-                  })}
+                  {data.production_companies[0] == null
+                    ? "Not Known"
+                    : data.production_companies.map((company, index, row) => {
+                        if (index + 1 === row.length) {
+                          return company.name;
+                        }
+                        return `${company.name}, `;
+                      })}
                 </p>
               </div>
               <div className="flex">
                 <h1 className="w-1/2">Budget</h1>
                 <p classname="w-1/2">
-                  : {data.budget == 0 ? "Not Known" : data.budget}
+                  : {data.budget == 0 ? "Not Known" : convertUSD(data.budget)}
                 </p>
               </div>
             </div>

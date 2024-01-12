@@ -1,7 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
-import { getMovieResponse } from "./libs/fetch";
+import { getMovieResponse } from "../libs/fetch";
 
 export default async function Home() {
   const responsePopularMovie = await getMovieResponse(

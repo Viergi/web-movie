@@ -1,4 +1,4 @@
-import { getMovieResponse } from "@/app/libs/fetch";
+import { getMovieResponse } from "@/libs/fetch";
 import DetailMovie from "@/components/DetailMovie";
 import MovieList from "@/components/MovieList";
 
@@ -25,10 +25,12 @@ export default async function Page({ params }) {
   return (
     <div className="h-screen">
       <DetailMovie data={responseDetailMovie} />
-      <MovieList
-        api={responseSimilarMovie.results.slice(0, 5)}
-        title={"Similar Movie"}
-      />
+      {responseSimilarMovie.results.length > 1 ? (
+        <MovieList
+          api={responseSimilarMovie.results.slice(0, 5)}
+          title={"Similar Movie"}
+        />
+      ) : null}
       <MovieList
         api={responsePopularMovie.results.slice(0, 5)}
         title={"Popular Movie"}

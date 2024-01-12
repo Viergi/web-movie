@@ -51,6 +51,14 @@ img {
   );
 }
 
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll {
+  scrollbar-width: none;
+}
+
 /* img:hover {
   scale: 110%;
 } */
