@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Card({ title, imageURL, id }) {
+export default function Card({ title, imageURL, id, releaseDate }) {
   const scrollTop = () => {
     scrollTo({
       top: 0,
@@ -14,8 +14,8 @@ export default function Card({ title, imageURL, id }) {
   return (
     <Link
       onClick={scrollTop}
-      href={`/detail/${id}`}
-      className="relative h-40 lg:h-64 xl:h-72 rounded-lg overflow-hidden shadow-md shadow-black w-[95%]"
+      href={`/movie/${id}`}
+      className="h-full w-[95%] hover:scale-[1.10] transition-all duration-700"
     >
       {imageURL ? (
         <Image
@@ -23,16 +23,17 @@ export default function Card({ title, imageURL, id }) {
           alt="..."
           width={350}
           height={350}
-          className="w-full h-full hover:scale-[1.10] transition-all duration-700 object-fill bg-slate-600"
+          className="h-[80%] rounded-lg object-fill bg-slate-600"
         ></Image>
       ) : (
-        <div className="w-full h-full flex justify-center items-center bg-slate-600">
+        <div className="flex justify-center items-center bg-slate-600">
           Tidak ada Gambar
         </div>
       )}
-      <h1 className="absolute bottom-2 left-3 font-bold truncate h-6 w-[80%] text-white text-shadow ">
-        {title}
-      </h1>
+      <h1 className="font-bold truncate pt-2 w-[80%] text-white">{title}</h1>
+      <h3 className="font-bold truncate text-[0.7rem] w-[80%] text-gray-600 ">
+        {releaseDate.slice(0, 4)}
+      </h3>
     </Link>
   );
 }

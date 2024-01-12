@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 export default function InputSearch() {
-  const serachRef = useRef();
+  const searchRef = useRef();
   const route = useRouter();
 
   function handleSearch(event) {
-    const keyword = serachRef.current.value;
+    const keyword = searchRef.current.value;
 
     if (!keyword) return;
 
@@ -25,8 +25,7 @@ export default function InputSearch() {
       <input
         placeholder="Cari Film"
         className="w-32 h-8 indent-2 text-sm outline-none"
-        ref={serachRef}
-        type="text"
+        ref={searchRef}
         minLength={3}
       />
       <button
