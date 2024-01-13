@@ -18,12 +18,12 @@ export default async function Home() {
   */
   const randomNumber = Math.floor(Math.random() * 10);
   return (
-    <div className="pb-2">
-      <div className="w-full h-[25rem] mb-8">
+    <div className="pb-2 ">
+      <div className="w-full h-40 md:h-[25rem] xl:h-[32rem] mb-8 ">
         <HeroSection
           title={responsePopularMovie.results[randomNumber].title}
-          // imageURL={data.results[randomNumber].backdrop_path }
-          imageURL={responsePopularMovie.results[1].backdrop_path}
+          imageURL={responsePopularMovie.results[randomNumber].backdrop_path}
+          movieID={responsePopularMovie.results[randomNumber].id}
         />
       </div>
       <MovieList
