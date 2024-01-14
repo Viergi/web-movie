@@ -6,6 +6,8 @@ import { getMovieResponse } from "@/libs/fetch";
 import { useEffect, useState } from "react";
 
 export default function Page() {
+  // * Max Page = 500 in api
+
   const [page, setPage] = useState(1);
   const [movieList, SetMovieList] = useState([]);
 
@@ -14,6 +16,7 @@ export default function Page() {
       "movie/popular",
       `language=en-US&page=${page}`
     );
+    const dataGenreMovie = await getMovieGenres();
     SetMovieList(responsePopularMovie);
   };
 
@@ -28,26 +31,43 @@ export default function Page() {
     });
   };
 
-  const handleNPrevButton = () => {
+  const handlePrevButton = () => {
     if (page == 1) return;
     setPage((prev) => prev - 1);
     scrollTop();
   };
 
   const handleNextButton = () => {
-    if (page == movieList.total_pages) return;
+    if (page == 500) return;
     setPage((prev) => prev + 1);
+    scrollTop();
+  };
+
+  const handleFirstPageButton = () => {
+    if (page == 1) return;
+    setPage(1);
+    scrollTop();
+  };
+  const handleLastPageButton = () => {
+    if (page == 500) return;
+    setPage(500);
     scrollTop();
   };
 
   return (
     <div>
-      <MovieList api={movieList.results} title={"Popular Movie"} />
+      <MovieList
+        response={movieList.results}
+        title={"Popular Movie"}
+        genres={dataGenreMovie}
+      />
       <Pagination
         page={page}
         lastpage={movieList.total_pages}
         handleNextButton={handleNextButton}
-        handleNPrevButton={handleNPrevButton}
+        handlePrevButton={handlePrevButton}
+        handleFirstPageButton={handleFirstPageButton}
+        handleLastPageButton={handleLastPageButton}
       />
     </div>
   );

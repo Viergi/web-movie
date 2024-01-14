@@ -27,12 +27,12 @@ export default async function Home() {
         />
       </div>
       <MovieList
-        api={responsePopularMovie.results.slice(0, 10)}
+        response={responsePopularMovie.results.slice(0, 10)}
         title="Popular Movie"
         seeMore={"popular"}
       />
       <MovieList
-        api={responseTopRatedMovie.results.slice(0, 10)}
+        response={responseTopRatedMovie.results.slice(0, 10)}
         title="Top Rated Movie"
         seeMore={"top-rated"}
       />

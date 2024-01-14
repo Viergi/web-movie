@@ -4,7 +4,7 @@ import { ImageSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Card({ title, imageURL, id, releaseDate }) {
+export default function Card({ title, imageURL, id, releaseDate, genre }) {
   const scrollTop = () => {
     scrollTo({
       top: 0,
@@ -33,8 +33,16 @@ export default function Card({ title, imageURL, id, releaseDate }) {
         </div>
       )}
       <h1 className="font-bold truncate pt-2 w-[80%] text-white">{title}</h1>
-      <h3 className="font-bold truncate text-[0.7rem] w-[80%] text-gray-600 ">
-        {releaseDate.slice(0, 4)}
+      <h3 className="font-bold text-[0.7rem] w-full text-gray-600 flex justify-between">
+        <span>{releaseDate.slice(0, 4)}</span>
+        <span>
+          {genre.slice(0, 2).map((genre, index, row) => {
+            if (index + 1 == row.length) {
+              return genre;
+            }
+            return `${genre}, `;
+          })}
+        </span>
       </h3>
     </Link>
   );
