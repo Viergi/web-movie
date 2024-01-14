@@ -35,7 +35,7 @@ export default function AboutMovie({
             <h1 className="lg:w-1/2 flex gap-1 lg:gap-0 lg:justify-between ">
               Production Countries <span>: &nbsp;</span>
             </h1>
-            <p classname="">
+            <p className="lg:w-1/2">
               {productionCountries[0] == null
                 ? "Not Known"
                 : productionCountries[0].name}
@@ -60,7 +60,7 @@ export default function AboutMovie({
             <h1 className="lg:w-1/2 flex gap-1 lg:gap-0 lg:justify-between">
               Budget <span>: &nbsp;</span>
             </h1>
-            <p classname="lg:w-1/2">
+            <p className="lg:w-1/2">
               {budget == 0 ? "Not Known" : convertUSD(budget)}
             </p>
           </div>

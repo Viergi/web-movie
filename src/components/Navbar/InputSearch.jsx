@@ -9,11 +9,11 @@ export default function InputSearch() {
   const route = useRouter();
 
   function handleSearch(event) {
-    const keyword = searchRef.current.value;
+    event.preventDefault();
 
+    const keyword = searchRef.current.value;
     if (!keyword || keyword.trim() == "") return;
 
-    event.preventDefault();
     route.push(`/search/${keyword}`);
   }
 

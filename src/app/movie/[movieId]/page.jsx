@@ -34,10 +34,12 @@ export default async function Page({ params }) {
       <MovieList
         api={responsePopularMovie.results.slice(0, 5)}
         title={"Popular Movie"}
+        seeMore={"popular"}
       />
       <MovieList
         api={responseTopRatedMovie.results.slice(0, 5)}
         title={"Top Rated Movie"}
+        seeMore={"top-rated"}
       />
     </div>
   );
