@@ -38,7 +38,13 @@ export default function AboutMovie({
             <p className="lg:w-1/2">
               {productionCountries[0] == null
                 ? "Not Known"
-                : productionCountries[0].name}
+                : // productionCountries[0].name
+                  productionCountries.map((country, index, row) => {
+                    if (index + 1 === row.length) {
+                      return country.name;
+                    }
+                    return `${country.name}, `;
+                  })}
             </p>
           </div>
           <div className="flex flex-col lg:flex-row">

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.0.15",
+    "@splidejs/react-splide": "^0.7.12",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"

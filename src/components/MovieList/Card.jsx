@@ -1,8 +1,10 @@
 "use client";
 
+import Loading from "@/app/loading";
 import { ImageSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default function Card({ title, imageURL, id, releaseDate, genre }) {
   const scrollTop = () => {

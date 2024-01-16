@@ -21,9 +21,7 @@ export default async function Home() {
     <div className="pb-2 ">
       <div className="w-full h-40 md:h-[25rem] xl:h-[32rem] mb-8 ">
         <HeroSection
-          title={responsePopularMovie.results[randomNumber].title}
-          imageURL={responsePopularMovie.results[randomNumber].backdrop_path}
-          movieID={responsePopularMovie.results[randomNumber].id}
+          severalPopularFilms={responsePopularMovie.results.slice(0, 5)}
         />
       </div>
       <MovieList

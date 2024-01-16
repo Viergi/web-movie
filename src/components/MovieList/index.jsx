@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Card from "./Card";
 import { getGenre, getMovieGenres } from "@/libs/fetch";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function MovieList({ response, title, seeMore }) {
+export default function MovieList({ response, title, seeMore, movieId }) {
   const scrollTop = () => {
     scrollTo({
       top: 0,
@@ -32,7 +32,7 @@ export default function MovieList({ response, title, seeMore }) {
         {seeMore ? (
           <Link
             onClick={scrollTop}
-            href={`/${seeMore}`}
+            href={movieId ? `/${seeMore}/${movieId}` : `/${seeMore}`}
             className="text-white mr-10 hover:text-slate-600"
           >
             See More...

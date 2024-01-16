@@ -29,6 +29,8 @@ export default async function Page({ params }) {
         <MovieList
           response={responseSimilarMovie.results.slice(0, 5)}
           title={"Similar Movie"}
+          seeMore={"similar"}
+          movieId={movieId}
         />
       ) : null}
       <MovieList

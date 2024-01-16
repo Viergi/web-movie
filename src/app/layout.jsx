@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import "@splidejs/react-splide/css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning={"true"}>
       <body className={`${inter.className} relative bg-slate-950`}>
         <Navbar />
-        {children}
+        <div className="pt-20 md:pt-16">{children}</div>
       </body>
     </html>
   );

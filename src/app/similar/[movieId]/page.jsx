@@ -2,19 +2,30 @@
 
 import MovieList from "@/components/MovieList";
 import Pagination from "@/components/Utilities/Pagination";
-import { getMovieGenres, getMovieResponse } from "@/libs/fetch";
+import { getMovieResponse } from "@/libs/fetch";
 import { useEffect, useState } from "react";
 
-export default function Page() {
+export default function Page({ params }) {
   const [page, setPage] = useState(1);
-  const [movieList, setMovieList] = useState([]);
+  const [dataMovie, setDataMovie] = useState({
+    title: "",
+    similarMovieWithTheTitle: [],
+  });
+  const { movieId } = params;
 
   const fetchData = async () => {
-    const responsePopularMovie = await getMovieResponse(
-      "movie/top_rated",
+    const responseSimilarMovie = await getMovieResponse(
+      `movie/${movieId}/similar`,
       `language=en-US&page=${page}`
     );
-    setMovieList(responsePopularMovie);
+    const titleMovie = await getMovieResponse(
+      `movie/${movieId}`,
+      "language=en-US"
+    );
+    setDataMovie({
+      title: titleMovie.title,
+      similarMovieWithTheTitle: responseSimilarMovie,
+    });
   };
 
   useEffect(() => {
@@ -35,7 +46,7 @@ export default function Page() {
   };
 
   const handleNextButton = () => {
-    if (page == movieList.total_pages) return;
+    if (page == dataMovie.similarMovieWithTheTitle.total_pages) return;
     setPage((prev) => prev + 1);
     scrollTop();
   };
@@ -46,17 +57,19 @@ export default function Page() {
     scrollTop();
   };
   const handleLastPageButton = () => {
-    if (page == movieList.total_pages) return;
-    setPage(movieList.total_pages);
+    if (page == 500) return;
+    setPage(500);
     scrollTop();
   };
-
   return (
     <div>
-      <MovieList response={movieList.results} title={"Top Rated Movie"} />
+      <MovieList
+        response={dataMovie.similarMovieWithTheTitle.results}
+        title={`Similar movie with ${dataMovie.title}`}
+      />
       <Pagination
         page={page}
-        lastpage={movieList.total_pages}
+        lastpage={dataMovie.similarMovieWithTheTitle.total_pages}
         handleNextButton={handleNextButton}
         handlePrevButton={handlePrevButton}
         handleFirstPageButton={handleFirstPageButton}

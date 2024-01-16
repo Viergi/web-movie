@@ -16,7 +16,6 @@ export default function Page() {
       "movie/popular",
       `language=en-US&page=${page}`
     );
-    const dataGenreMovie = await getMovieGenres();
     SetMovieList(responsePopularMovie);
   };
 
@@ -56,11 +55,7 @@ export default function Page() {
 
   return (
     <div>
-      <MovieList
-        response={movieList.results}
-        title={"Popular Movie"}
-        genres={dataGenreMovie}
-      />
+      <MovieList response={movieList.results} title={"Popular Movie"} />
       <Pagination
         page={page}
         lastpage={movieList.total_pages}

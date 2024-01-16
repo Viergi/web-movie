@@ -23,7 +23,7 @@ export default function Pagination({
               Prev
             </button>
           </div>
-          <h1>{`${page} of 500`}</h1>
+          <h1>{`${page} of ${lastpage > 500 ? "500" : lastpage}`}</h1>
           <div className="flex gap-6">
             <button onClick={handleNextButton} className="hover:text-slate-600">
               Next

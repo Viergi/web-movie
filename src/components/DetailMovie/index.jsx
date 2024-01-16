@@ -14,7 +14,7 @@ export default function DetailMovie({ data }) {
           className="absolute top-0 -z-10 object-cover object-[100%,30%] "
         />
       ) : (
-        <div className="absolute -z-10 left-0 top-0 w-full h-full flex  items-center bg-slate-300">
+        <div className="absolute -z-10 left-0 top-0 w-full h-full flex  items-center bg-slate-950">
           No Picture
         </div>
       )}
