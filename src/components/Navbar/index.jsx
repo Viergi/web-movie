@@ -8,7 +8,6 @@ export default function Navbar() {
       <Script>
         {`let prevScrollpos = window.pageYOffset;
           window.onscroll = function () {
-            console.log(window.pageYOffset);
             let currentScrollPos = window.pageYOffset;
             if (window.pageYOffset < 100) {
               document.querySelector(".navbar").style.top = "0";

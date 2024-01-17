@@ -1,18 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Card from "./Card";
 import { getGenre, getMovieGenres } from "@/libs/fetch";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Card from "./Card";
 
 export default function MovieList({ response, title, seeMore, movieId }) {
-  const scrollTop = () => {
-    scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   const [genres, setGenres] = useState([]);
   const fetchGenresMovie = async () => {
     const dataGenreMovie = await getMovieGenres();
@@ -22,6 +15,12 @@ export default function MovieList({ response, title, seeMore, movieId }) {
   useEffect(() => {
     fetchGenresMovie();
   });
+  const scrollTop = () => {
+    scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="px-4 relative z-10">

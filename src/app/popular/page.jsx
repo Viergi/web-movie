@@ -3,11 +3,15 @@
 import MovieList from "@/components/MovieList";
 import Pagination from "@/components/Utilities/Pagination";
 import { getMovieResponse } from "@/libs/fetch";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Page() {
   // * Max Page = 500 in api
 
+  // const responsePopularMovie = await getMovieResponse(
+  //   "movie/popular",
+  //   `language=en-US&page=1`
+  // );
   const [page, setPage] = useState(1);
   const [movieList, SetMovieList] = useState([]);
 
@@ -52,10 +56,9 @@ export default function Page() {
     setPage(500);
     scrollTop();
   };
-
   return (
-    <div>
-      <MovieList response={movieList.results} title={"Popular Movie"} />
+    <div className="h-screen">
+      <MovieList response={movieList.results} />
       <Pagination
         page={page}
         lastpage={movieList.total_pages}
