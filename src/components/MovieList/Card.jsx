@@ -1,10 +1,8 @@
 "use client";
 
-import Loading from "@/app/loading";
 import { ImageSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export default function Card({ title, imageURL, id, releaseDate, genre }) {
   const scrollTop = () => {
@@ -39,10 +37,14 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
         <span>{releaseDate.slice(0, 4)}</span>
         <span>
           {genre.slice(0, 2).map((genre, index, row) => {
-            if (index + 1 == row.length) {
-              return genre;
+            if (window.innerWidth <= 320) {
+              return;
+            } else {
+              if (index + 1 == row.length) {
+                return genre;
+              }
+              return `${genre}, `;
             }
-            return `${genre}, `;
           })}
         </span>
       </h3>

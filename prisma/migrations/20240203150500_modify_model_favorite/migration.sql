@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Favorite" ALTER COLUMN "poster" DROP NOT NULL,
+ALTER COLUMN "genre" DROP NOT NULL,
+ALTER COLUMN "release_date" DROP NOT NULL;

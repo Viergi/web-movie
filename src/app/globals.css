@@ -51,7 +51,8 @@ img {
   );
 }
 
-.scroll::-webkit-scrollbar {
+.scroll::-webkit-scrollbar,
+.comment-scroll::-webkit-scrollbar {
   display: none;
 }
 

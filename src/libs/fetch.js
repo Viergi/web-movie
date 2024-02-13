@@ -1,3 +1,5 @@
+//fetch api
+
 export const getMovieResponse = async (resource, query) => {
   const options = {
     headers: {

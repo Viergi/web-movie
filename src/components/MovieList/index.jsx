@@ -4,8 +4,24 @@ import Link from "next/link";
 import { getGenre, getMovieGenres } from "@/libs/fetch";
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import dynamic from "next/dynamic";
 
-export default function MovieList({ response, title, seeMore, movieId }) {
+// const Card = dynamic(
+//   () => {
+//     return import("./Card");
+//   },
+//   {
+//     ssr: false,
+//   }
+// );
+
+export default function MovieList({
+  response,
+  title,
+  seeMore,
+  movieId,
+  movieTitle,
+}) {
   const [genres, setGenres] = useState([]);
   const fetchGenresMovie = async () => {
     const dataGenreMovie = await getMovieGenres();
@@ -14,7 +30,8 @@ export default function MovieList({ response, title, seeMore, movieId }) {
 
   useEffect(() => {
     fetchGenresMovie();
-  });
+  }, []);
+
   const scrollTop = () => {
     scrollTo({
       top: 0,
@@ -25,14 +42,18 @@ export default function MovieList({ response, title, seeMore, movieId }) {
   return (
     <div className="px-4 relative z-10">
       <div className="flex justify-between items-center">
-        <h1 className="font-bold py-2 pb-4 text-2xl text-white">
+        <h1 className="font-bold py-2 pb-4 text-lg md:text-2xl text-white">
           {title ? title : null}
         </h1>
         {seeMore ? (
           <Link
             onClick={scrollTop}
-            href={movieId ? `/${seeMore}/${movieId}` : `/${seeMore}`}
-            className="text-white mr-10 hover:text-slate-600"
+            href={
+              movieId
+                ? `/${seeMore}/${movieId}/?title=${movieTitle}&page=1`
+                : `/${seeMore}/?page=1`
+            }
+            className="text-white mr-10 py-2 pb-4 text-sm md:text-lg hover:text-slate-600"
           >
             See More...
           </Link>

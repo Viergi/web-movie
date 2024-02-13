@@ -1,10 +1,20 @@
 import Image from "next/image";
 import Overview from "./Overview";
+import { getCurrentUser } from "@/libs/getUser";
+import { db } from "@/libs/db";
 
-export default function DetailMovie({ data }) {
+export default async function DetailMovie({ data }) {
+  const user = await getCurrentUser();
+  const alreadyAdd = await db.favorite.findFirst({
+    where: {
+      movie_id: data.id.toString(),
+      user_email: user?.email,
+    },
+  });
+
   return (
     <div className="h-auto w-full relative z-10 ">
-      <div className="absolute  w-full md:h-[85%] lg:h-[80%] h-3/4 -bottom-[5.5rem] z-[0] border-t backdrop-blur-sm bg-gradient-to-b from-white/10 to-slate-950 via-slate-950"></div>
+      <div className="absolute  w-full md:h-[85%] lg:h-[80%] h-3/4 -bottom-[7rem] z-[0] border-t backdrop-blur-sm bg-gradient-to-b from-white/10 to-slate-950 via-slate-950"></div>
       {data.backdrop_path ? (
         <Image
           src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${data.backdrop_path}`}
@@ -18,7 +28,7 @@ export default function DetailMovie({ data }) {
           No Picture
         </div>
       )}
-      <Overview data={data} />
+      <Overview data={data} user={user} alreadyAdd={alreadyAdd} />
     </div>
   );
 }

@@ -1,0 +1,21 @@
+import SignUpForm from "@/components/AuthForm/SignUpForm";
+import { getCurrentUser } from "@/libs/getUser";
+import { redirect } from "next/navigation";
+
+export default async function Page() {
+  const user = await getCurrentUser();
+
+  if (user) {
+    redirect("/");
+  }
+  return (
+    <div className="flex justify-center items-center h-screen bg-slate-300">
+      <div className="rounded-md border-2 flex flex-col justify-center items-center w-[80%] md:w-1/2 lg:w-3/12 bg-white shadow-md shadow-black">
+        <h1 className="font-bold text-xl py-2 border-b-2 border-black w-[90%] flex justify-center items-center">
+          Sign Up
+        </h1>
+        <SignUpForm />
+      </div>
+    </div>
+  );
+}

@@ -7,7 +7,7 @@ export default function TitleMovie({ releaseDate, title, genres }) {
       <h1 className="text-xl md:text-2xl lg:text-[2.3rem] font-bold text-white text-shadow">
         {title}
       </h1>
-      <h1 className="text-sm md:text-lg lg:text-2xl font-bold text-white text-shadow">
+      <h1 className="text-sm md:text-lg lg:text-2xl font-bold text-white text-shadow h-8">
         {genres.map((genre, index, row) => {
           if (index + 1 === row.length) {
             return genre.name;
