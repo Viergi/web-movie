@@ -21,6 +21,8 @@ export default async function DetailMovie({ data }) {
           alt="..."
           width={500}
           height={500}
+          loading="eager"
+          priority
           className="absolute top-0 -z-10 object-cover object-[100%,30%] "
         />
       ) : (

@@ -30,6 +30,7 @@ export default function InputSearch() {
       <button
         type="submit"
         className="w-1/5 h-full bg-slate-950 flex justify-center items-center hover:bg-white hover:text-black transition-all text-white border-l-2"
+        aria-label="Search"
       >
         <MagnifyingGlass size={18} />
       </button>

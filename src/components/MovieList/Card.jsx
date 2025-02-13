@@ -20,10 +20,10 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
     >
       {imageURL ? (
         <Image
-          src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${imageURL}`}
+          src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL_CARD}${imageURL}`}
           alt="..."
-          width={350}
-          height={350}
+          height={500}
+          width={500}
           className="h-[80%] rounded-lg object-fill bg-slate-600"
         ></Image>
       ) : (
@@ -33,7 +33,7 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
         </div>
       )}
       <h1 className="font-bold truncate pt-2 w-[80%] text-white">{title}</h1>
-      <h3 className="font-bold text-[0.7rem] w-full text-gray-600 flex justify-between">
+      <h2 className="font-bold text-[0.7rem] w-full text-gray-400 flex justify-between">
         <span>{releaseDate.slice(0, 4)}</span>
         <span>
           {genre.slice(0, 2).map((genre, index, row) => {
@@ -47,7 +47,7 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
             }
           })}
         </span>
-      </h3>
+      </h2>
     </Link>
   );
 }

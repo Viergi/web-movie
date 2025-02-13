@@ -142,6 +142,7 @@ export default function SignUpForm() {
               type="password"
               name="password"
               placeholder="Enter password"
+              autoComplete="new-password"
             />
             {error.password && (
               <h3 className="text-red-700 text-xs font-semibold pl-2">
@@ -164,6 +165,7 @@ export default function SignUpForm() {
               type="password"
               name="confirmPassword"
               placeholder="Re-Enter password"
+              autoComplete="new-password"
             />
             {error.confirmPassword && (
               <h3 className="text-red-700 text-xs font-semibold pl-2">
