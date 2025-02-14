@@ -1,7 +1,7 @@
 import FormComments from "./FormComments";
 import Comment from "./Comments";
 import { getCurrentUser } from "@/libs/getUser";
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 
 export default async function CommentSection({ movieId, title }) {
   const user = await getCurrentUser();

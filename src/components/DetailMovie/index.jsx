@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Overview from "./Overview";
 import { getCurrentUser } from "@/libs/getUser";
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 
 export default async function DetailMovie({ data }) {
   const user = await getCurrentUser();

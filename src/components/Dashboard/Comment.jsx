@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 
 export default async function Comment({ user }) {
   const commentList = await db.comment.findMany({

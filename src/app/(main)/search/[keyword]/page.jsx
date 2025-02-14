@@ -2,7 +2,9 @@ import { getMovieResponse } from "@/libs/fetch";
 import MovieList from "@/components/MovieList";
 import Pagination from "@/components/Utilities/Pagination";
 
-export default async function Page({ params, searchParams }) {
+export default async function Page(props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const page = searchParams?.page || 1;
   const { keyword } = params;
   let decodedKeyword = decodeURI(keyword);

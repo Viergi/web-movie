@@ -1,5 +1,5 @@
 import GenreMovie from "@/components/Dashboard/GenreMovie";
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 import { getCurrentUser } from "@/libs/getUser";
 import Image from "next/image";
 import Link from "next/link";

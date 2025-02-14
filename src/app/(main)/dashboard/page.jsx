@@ -5,14 +5,15 @@ import Comment from "@/components/Dashboard/Comment";
 
 import dynamic from "next/dynamic";
 
-const FavoriteMovie = dynamic(
-  () => {
-    return import("@/components/Dashboard/FavoriteMovie");
-  },
-  {
-    ssr: false,
-  }
-);
+// const FavoriteMovie = dynamic(
+//   () => {
+//     return import("@/components/Dashboard/FavoriteMovie");
+//   },
+//   {
+//     ssr: false,
+//   }
+// );
+import FavoriteMovie from "@/components/Dashboard/FavoriteMovie";
 
 export default async function Page() {
   const user = await getCurrentUser();

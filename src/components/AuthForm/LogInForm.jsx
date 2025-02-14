@@ -5,6 +5,7 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -63,7 +64,7 @@ export default function LoginForm() {
       <div className="flex flex-col items-center w-full gap-1 mt-4">
         <SubmitButton title={"Log In"} />
         <p className="text-xs font-semibold">
-          Don't have account Sign In{" "}
+          Don't have account Sign Up{" "}
           <Link
             href={"/sign-up"}
             className="text-blue-700 hover:text-blue-950 hover:underline"

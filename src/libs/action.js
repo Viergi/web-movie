@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { AuthError } from "next-auth";
-import { db } from "./db";
+import { db } from "./prisma";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 

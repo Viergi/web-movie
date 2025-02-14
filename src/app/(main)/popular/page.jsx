@@ -6,7 +6,8 @@ import { getMovieResponse } from "@/libs/fetch";
 // import { usePathname, useRouter, useSearchParams } from "next/navigation";
 // import { useCallback, useEffect, useState } from "react";
 
-export default async function Page({ searchParams }) {
+export default async function Page(props) {
+  const searchParams = await props.searchParams;
   // ! Max Page = 500 in api
 
   const page = searchParams?.page || 1;

@@ -24,6 +24,10 @@ img {
   text-shadow: 1px 1px 1px black;
 }
 
+.text-shadow-white {
+  text-shadow: 1px 1px 1px white;
+}
+
 .loading {
   width: 100px;
   height: 100px;

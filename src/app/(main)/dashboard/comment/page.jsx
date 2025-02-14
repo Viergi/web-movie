@@ -1,4 +1,4 @@
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 import { getCurrentUser } from "@/libs/getUser";
 import Link from "next/link";
 

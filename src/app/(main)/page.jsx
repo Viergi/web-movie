@@ -31,7 +31,7 @@ export default async function Home() {
   return (
     <div className="pb-2 ">
       {/* belajar LCP yang di jadikan gambar untuk LCP disarankan untuk tidak diambil dari internet */}
-      <div className="w-full h-40 md:h-[25rem] xl:h-[32rem] text-center mt-8 bg-slate-600 relative flex justify-center items-center">
+      <div className="w-full h-40 md:h-[25rem] xl:h-[32rem] text-center mt-8 relative flex justify-center items-center">
         {/* <picture className="absolute top-0 right-0 w-full h-full">
           <source
             media="(max-width: 600px)"
@@ -44,14 +44,15 @@ export default async function Home() {
           />f
         </picture> */}
         <Image
-          className="absolute top-0 right-0 w-full h-full"
+          className="absolute top-0 right-0 w-full h-full opacity-50 "
           priority
           fetchPriority="high"
           // srcSet="/background-film-small.jpg 600w, /background-film-large.jpg 400w"
           // sizes="(max-width: 600px) 480px, "
           width={500}
           height={500}
-          src={"/background-film-large.jpg"}
+          src={"/background-web-movie1.jpg"}
+          alt="..."
         ></Image>
         {/* <img
           fetchPriority="high"

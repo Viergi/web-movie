@@ -3,7 +3,8 @@ import DetailMovie from "@/components/DetailMovie";
 import MovieList from "@/components/MovieList";
 import CommentSection from "@/components/CommentSection";
 
-export default async function Page({ params }) {
+export default async function Page(props) {
+  const params = await props.params;
   const { movieId } = params;
 
   const responseDetailMovie = await getMovieResponse(

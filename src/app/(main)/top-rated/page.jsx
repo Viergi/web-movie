@@ -2,7 +2,8 @@ import MovieList from "@/components/MovieList";
 import Pagination from "@/components/Utilities/Pagination";
 import { getMovieResponse } from "@/libs/fetch";
 
-export default async function Page({ searchParams }) {
+export default async function Page(props) {
+  const searchParams = await props.searchParams;
   const page = searchParams?.page || 1;
   const responsePopularMovie = await getMovieResponse(
     "movie/top_rated",
