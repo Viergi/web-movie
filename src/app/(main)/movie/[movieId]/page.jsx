@@ -1,7 +1,7 @@
 import { getMovieResponse } from "@/libs/fetch";
 import DetailMovie from "@/components/DetailMovie";
 import MovieList from "@/components/MovieList";
-import CommentSection from "@/components/CommentSection";
+import Comments from "@/components/Comments";
 
 export default async function Page(props) {
   const params = await props.params;
@@ -27,7 +27,7 @@ export default async function Page(props) {
   return (
     <div>
       <DetailMovie data={responseDetailMovie} />
-      <CommentSection movieId={movieId} title={responseDetailMovie.title} />
+      <Comments movieId={movieId} title={responseDetailMovie.title} />
       {responseSimilarMovie.results.length > 1 ? (
         <MovieList
           response={responseSimilarMovie.results.slice(0, 5)}

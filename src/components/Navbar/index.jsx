@@ -9,8 +9,9 @@ export default async function Navbar() {
   let prevScrollpos;
 
   return (
-    <div className="flex flex-col md:flex-row justify-between p-4 bg-slate-900 bg-opacity-80 backdrop-blur-sm md:items-center border-b fixed w-full top-0 z-50 navbar transition-all duration-300">
+    <div className="grid grid-cols-2 md:flex md:flex-row md:justify-between p-4 bg-slate-900 bg-opacity-80 backdrop-blur-sm md:items-center border-b fixed w-full top-0 z-50 navbar transition-all duration-300 gap-2 md:gap-0">
       <Script>
+        {/* script buat navbar hilang */}
         {`prevScrollpos = window.pageYOffset;
           window.onscroll = function () {
             let currentScrollPos = window.pageYOffset;
@@ -18,9 +19,9 @@ export default async function Navbar() {
               document.querySelector(".navbar").style.top = "0";
             } else {
               if(window.innerWidth < 426) {
-                document.querySelector(".navbar").style.top = "-8rem";
+                document.querySelector(".navbar").style.top = "-129px";
               } else {
-                document.querySelector(".navbar").style.top = "-4rem";
+                document.querySelector(".navbar").style.top = "-65px";
               }
             }
             prevScrollpos = currentScrollPos;
@@ -29,12 +30,12 @@ export default async function Navbar() {
       </Script>
       <Link
         href="/"
-        className="font-bold px-1 text-xl first-letter:text-[2rem] text-white text-shadow"
+        className="font-bold text-xl first-letter:text-[2rem] text-white text-shadow hover:text-slate-500"
       >
         FilmVista
       </Link>
-      <InputSearch />
       <AuthButton user={user} />
+      <InputSearch />
     </div>
   );
 }

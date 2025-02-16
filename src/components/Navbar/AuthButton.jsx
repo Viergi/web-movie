@@ -5,11 +5,11 @@ import Link from "next/link";
 
 export default function AuthButton({ user }) {
   return (
-    <>
+    <div className="md:order-3 flex justify-end items-center">
       {user ? (
         <Link
           href={"/dashboard"}
-          className="md:mx-4 mt-2 md:mt-0 flex items-center gap-2"
+          className="md:mx-4 md:mt-0 flex items-center gap-2"
         >
           {user.image ? (
             <Image
@@ -26,11 +26,11 @@ export default function AuthButton({ user }) {
       ) : (
         <Link
           href={"/login"}
-          className="md:mx-4 mt-2 md:mt-0 hover:text-slate-900 text-white"
+          className="md:mx-4 md:mt-0 hover:text-slate-500 text-white"
         >
           Log In
         </Link>
       )}
-    </>
+    </div>
   );
 }

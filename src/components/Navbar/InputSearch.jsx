@@ -18,7 +18,7 @@ export default function InputSearch() {
 
   return (
     <form
-      className="relative w-full md:w-80 mr-4 h-8 border-2 overflow-hidden rounded-lg border-white flex items-center"
+      className="relative w-full col-span-2 md:order-2 md:w-80 mr-4 h-8 border-2 overflow-hidden rounded-lg border-white flex items-center"
       onSubmit={handleSearch}
     >
       <input

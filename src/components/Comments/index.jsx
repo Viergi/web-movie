@@ -1,9 +1,9 @@
 import FormComments from "./FormComments";
-import Comment from "./Comments";
+import Comment from "./Comment";
 import { getCurrentUser } from "@/libs/getUser";
 import { db } from "@/libs/prisma";
 
-export default async function CommentSection({ movieId, title }) {
+export default async function Comments({ movieId, title }) {
   const user = await getCurrentUser();
   const comments = await db.comment.findMany({
     where: { movie_id: movieId },
