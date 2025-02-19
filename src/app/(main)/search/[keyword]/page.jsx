@@ -16,8 +16,8 @@ export default async function Page(props) {
 
   if (searchedMovie.results?.length < 1) {
     return (
-      <div className="p-4 bg-slate-950 flex justify-center items-center">
-        <h1 className="text-white font-bold text-2xl">{`${decodedKeyword} Not Found`}</h1>
+      <div className="p-4 bg-background-primary flex justify-center items-center min-h-screen">
+        <h1 className="text-white font-bold text-2xl">{`${decodedKeyword} Not Found 😢`}</h1>
       </div>
     );
   }

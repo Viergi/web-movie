@@ -13,8 +13,8 @@ export default async function Page() {
   });
 
   return (
-    <div className="w-full px-2">
-      <div className="flex items-center justify-between px-2 py-4">
+    <div className="w-full px-2 min-h-screen md:pt-12">
+      <div className="flex items-center justify-between px-4 md:px-8 lg:px-10 xl:px-24 py-8 lg:pb-10">
         <h1 className="text-white text-md md:text-xl font-bold">
           Favorite Movie
         </h1>

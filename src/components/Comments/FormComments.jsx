@@ -44,7 +44,7 @@ export default function FormComments({ user, movieId, title }) {
         autoComplete="off"
         name="comment"
         type="text"
-        className="w-full h-10 pl-3 text-gray-200 placeholder:text-gray-600 border outline-none bg-slate-950"
+        className="w-full h-10 pl-3 text-gray-200 placeholder:text-gray-600 border outline-none bg-background-primary"
       />
       {error && (
         <h3 className="text-red-700 text-xs font-semibold pl-2">{error}</h3>

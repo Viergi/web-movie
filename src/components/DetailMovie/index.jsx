@@ -14,7 +14,7 @@ export default async function DetailMovie({ data }) {
 
   return (
     <div className="h-auto w-full relative z-10 ">
-      <div className="absolute  w-full md:h-[85%] lg:h-[80%] h-3/4 -bottom-[7rem] z-[0] border-t backdrop-blur-sm bg-gradient-to-b from-white/10 to-slate-950 via-slate-950"></div>
+      <div className="absolute  w-full md:h-[85%] lg:h-[80%] h-3/4 -bottom-[7rem] z-[0] border-t backdrop-blur-sm bg-gradient-to-b from-white/10 to-background-primary via-background-primary"></div>
       {data.backdrop_path ? (
         <Image
           src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${data.backdrop_path}`}

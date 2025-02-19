@@ -1,4 +1,5 @@
 //fetch api
+"use server";
 
 export const getMovieResponse = async (resource, query) => {
   const options = {
@@ -33,17 +34,17 @@ export const getMovieGenres = async () => {
   return data.genres;
 };
 
-export const getGenre = (genreID, genres) => {
-  // console.log(genres);
-  let genre = [];
+// export const getGenre = async (genreID, genres) => {
+//   // console.log(genres);
+//   let genre = [];
 
-  genreID.map((item1) => {
-    genres.map((item2) => {
-      if (item1 == item2.id) {
-        genre.push(item2.name);
-      }
-    });
-  });
+//   genreID.map((item1) => {
+//     genres.map((item2) => {
+//       if (item1 == item2.id) {
+//         genre.push(item2.name);
+//       }
+//     });
+//   });
 
-  return genre;
-};
+//   return genre;
+// };

@@ -9,10 +9,7 @@ export default function TitleMovie({ releaseDate, title, genres }) {
       </h1>
       <h1 className="text-sm md:text-lg lg:text-2xl font-bold text-white text-shadow h-8">
         {genres.map((genre, index, row) => {
-          if (index + 1 === row.length) {
-            return genre.name;
-          }
-          return `${genre.name}, `;
+          return `${genre.name}${index !== genres.length - 1 ? ", " : ""}`;
         })}
       </h1>
     </>

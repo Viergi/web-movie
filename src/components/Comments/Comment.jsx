@@ -18,7 +18,7 @@ export default function Comments({ comments }) {
           display ? "h-60" : "h-0"
         } text-white w-full mt-2 block transition-all duration-300  overflow-hidden`}
       >
-        <div className="overflow-auto p-1 bg-slate-900 w-full flex flex-col gap-2 h-full comment-scroll">
+        <div className="overflow-auto p-1 bg-transparent w-full flex flex-col gap-2 h-full comment-scroll">
           {comments.length < 1 ? (
             <div className="h-full w-full flex justify-center items-center">
               <h1 className="text-xs md:text-xl">Belum ada komentar...</h1>

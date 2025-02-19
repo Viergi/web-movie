@@ -44,21 +44,18 @@ export default function Overview({ data, user, alreadyAdd }) {
   };
   return (
     <div className="w-full relative p-10 pt-16 md:p-0 md:pt-2 xl:pt-5 z-10">
-      {alreadyAdd && user ? (
-        <button
-          onClick={handleDeleteButton}
-          className="bg-slate-950 p-1 flex items-center gap-1 text-white md:ml-5 mb-2 md:mb-2 xl:ml-10 border-white border-2 text-sm "
-        >
-          Delete from Favorite
-        </button>
-      ) : (
-        <button
-          className="bg-slate-950 p-1 flex items-center gap-1 text-white md:ml-5 md:mb-2 xl:ml-10 border-white border-2 text-sm"
-          onClick={handleAddButton}
-        >
-          Add To Favorite <Plus width={15} />
-        </button>
-      )}
+      <button
+        onClick={alreadyAdd && user ? handleDeleteButton : handleAddButton}
+        className="bg-slate-950 p-1 flex items-center gap-1 text-white md:ml-5 mb-2 md:mb-2 xl:ml-10 border-white border-2 text-sm "
+      >
+        {alreadyAdd && user ? (
+          "Delete from Favorite"
+        ) : (
+          <>
+            Add To Favorite <Plus width={15} />
+          </>
+        )}
+      </button>
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-[25%] md:pl-5 pb-10 md:pb-0 xl:pl-10 ">
           {data.poster_path ? (

@@ -6,7 +6,6 @@ import Comments from "@/components/Comments";
 export default async function Page(props) {
   const params = await props.params;
   const { movieId } = params;
-
   const responseDetailMovie = await getMovieResponse(
     `movie/${movieId}`,
     "language=en-US"
@@ -23,9 +22,9 @@ export default async function Page(props) {
     "movie/top_rated",
     "language=en-US&page=1"
   );
-
+  // console.log(responseSimilarMovie);
   return (
-    <div>
+    <div className="pt-4">
       <DetailMovie data={responseDetailMovie} />
       <Comments movieId={movieId} title={responseDetailMovie.title} />
       {responseSimilarMovie.results.length > 1 ? (

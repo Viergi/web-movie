@@ -5,16 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Card({ title, imageURL, id, releaseDate, genre }) {
-  const scrollTop = () => {
-    scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <Link
-      onClick={scrollTop}
+      scroll={true}
       href={`/movie/${id}`}
       className="h-full w-[95%] hover:-translate-y-4 transition-all duration-300"
     >
@@ -37,6 +30,8 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
         <span>{releaseDate.slice(0, 4)}</span>
         <span>
           {genre.slice(0, 2).map((genre, index, row) => {
+            if (typeof window == "undefined") return;
+
             if (window.innerWidth <= 320) {
               return;
             } else {

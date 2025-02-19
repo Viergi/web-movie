@@ -1,63 +1,37 @@
-"use client";
-
 import Link from "next/link";
-import { getGenre, getMovieGenres } from "@/libs/fetch";
-import { useEffect, useState } from "react";
+import { getMovieGenres } from "@/libs/fetch";
 import Card from "./Card";
 import dynamic from "next/dynamic";
+import { getGenre } from "@/libs/convert";
 
-// const Card = dynamic(
-//   () => {
-//     return import("./Card");
-//   },
-//   {
-//     ssr: false,
-//   }
-// );
-
-export default function MovieList({
+export default async function MovieList({
   response,
   title,
   seeMore,
   movieId,
   movieTitle,
 }) {
-  const [genres, setGenres] = useState([]);
-  const fetchGenresMovie = async () => {
-    const dataGenreMovie = await getMovieGenres();
-    setGenres(dataGenreMovie);
-  };
-
-  useEffect(() => {
-    fetchGenresMovie();
-  }, []);
-
-  const scrollTop = () => {
-    scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  const genres = await getMovieGenres();
 
   return (
-    <div className="px-4 relative z-10">
-      <div className="flex justify-between items-center">
-        <h1 className="font-bold py-2 pb-4 text-lg md:text-2xl text-white">
+    <div className="px-4 pt-8 relative z-10 ">
+      <div className="flex justify-between items-center md:px-8 lg:px-10 xl:px-24">
+        <h1 className="font-bold py-2 pb-4 text-lg md:text-2xl text-white pl-3">
           {title ? title : null}
         </h1>
-        {seeMore ? (
+        {seeMore && (
           <Link
-            onClick={scrollTop}
+            scroll={true}
             href={
               movieId
                 ? `/${seeMore}/${movieId}/?title=${movieTitle}&page=1`
                 : `/${seeMore}/?page=1`
             }
-            className="text-white mr-10 py-2 pb-4 text-sm md:text-lg hover:text-slate-600"
+            className="text-white py-2 pb-4 text-sm md:text-lg hover:text-slate-600"
           >
             See More...
           </Link>
-        ) : null}
+        )}
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-8 gap-x-1 md:px-8 lg:px-10 xl:px-24 gap-y-4 gap-1">
         {response?.map((data) => {

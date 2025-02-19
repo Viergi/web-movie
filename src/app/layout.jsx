@@ -14,7 +14,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={"true"}>
-      <body className={`${inter.className} bg-slate-950`}>
+      <head>
+        <link rel="icon" href="/icon.png" type="image/x-icon" />
+      </head>
+      <body className={`${inter.className} bg-background-primary`}>
         {children}
         <Toaster position="top-right" />
       </body>
