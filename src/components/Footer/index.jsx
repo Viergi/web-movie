@@ -55,7 +55,7 @@ export default function Footer() {
       <div className="w-full grid grid-cols-2 grid-rows-3 gap-2 gap-y-4 px-3 pt-8 md:grid-cols-3 md:grid-rows-2 lg:grid-cols-5 lg:grid-rows-none lg:pb-4 xl:w-4/5 ">
         {contents.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="ml-2 md:ml-4">
               <h3 className="text-text-primary text-lg text-nowrap">
                 {item.title}
               </h3>
