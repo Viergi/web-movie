@@ -5,6 +5,7 @@ import { AuthError } from "next-auth";
 import { db } from "./prisma";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import bcrypt from "bcryptjs";
 
 // export async function authenticate(prevState, formData) {
 //   try {
@@ -22,10 +23,23 @@ import { revalidatePath } from "next/cache";
 //   }
 // }
 
+//hash password
+export async function hashPassword(password) {
+  const saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  return hashedPassword;
+}
+
+//verify password with bcrypt compare
+export async function verifyPassword(plainPassword, hashedPassword) {
+  return await bcrypt.compare(plainPassword, hashedPassword);
+}
+
 export async function createUser(formData) {
   const email = formData?.get("email");
   const username = formData?.get("username");
   const password = formData?.get("password");
+  const hashedPassword = await hashPassword(password);
 
   const existingEmail = await db.user.findUnique({
     where: { email: email },
@@ -38,11 +52,12 @@ export async function createUser(formData) {
   if (existingUsername)
     return { error: "Username telah digunakan", status: 409 };
 
+  console.log(hashedPassword);
   const newUser = await db.user.create({
     data: {
       email,
       username,
-      password,
+      password: hashedPassword,
     },
   });
 
