@@ -9,7 +9,7 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
     <Link
       scroll={true}
       href={`/movie/${id}`}
-      className="h-full w-[95%] hover:-translate-y-4 transition-all duration-300"
+      className="h-[80%] w-[95%] hover:-translate-y-4 transition-all duration-300"
     >
       {imageURL ? (
         <Image
@@ -20,7 +20,7 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
           className="h-[80%] rounded-lg object-fill bg-slate-600"
         ></Image>
       ) : (
-        <div className="flex justify-center items-center h-[80%] rounded-lg bg-slate-600">
+        <div className="flex justify-center items-center h-full rounded-lg bg-slate-600">
           <ImageSquare size={32} color="black" weight="fill" />
           No Picture
         </div>

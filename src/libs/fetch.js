@@ -23,6 +23,7 @@ export const getMovieGenres = async () => {
       accept: "application/json",
       Authorization: `${process.env.NEXT_PUBLIC_API_KEY}`,
     },
+    cache: `force-cache`,
   };
 
   const response = await fetch(

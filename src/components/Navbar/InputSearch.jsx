@@ -23,7 +23,7 @@ export default function InputSearch() {
     // >
     //   <input
     //     placeholder="Cari Film"
-    //     className="w-4/5 h-8 indent-2 text-sm outline-none text-gray-200 placeholder:text-gray-600 bg-slate-950"
+    //     className="w-4/5 h-8 indent-2 text-sm outline-hidden text-gray-200 placeholder:text-gray-600 bg-slate-950"
     //     ref={searchRef}
     //     minLength={3}
     //   />
@@ -66,14 +66,14 @@ export default function InputSearch() {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-4 ps-10 text-sm border border-white/15 rounded-lg bg-background-secondary text-text-primary"
+          className="block w-full p-4 ps-10 text-sm border border-white/15 rounded-lg bg-background-secondary focus:outline-hidden text-text-primary"
           ref={searchRef}
           placeholder="Search Movie"
           minLength={3}
         />
         <button
           type="submit"
-          className="text-white absolute end-2.5 bottom-2.5 bg-accent hover:bg-accent-hover  outline-none font-medium rounded-lg text-sm px-4 py-2"
+          className="text-white absolute end-2.5 bottom-2.5 bg-accent hover:bg-accent-hover  outline-hidden font-medium rounded-lg text-sm px-4 py-2"
         >
           Search
         </button>

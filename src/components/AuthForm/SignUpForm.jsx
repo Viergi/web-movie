@@ -15,33 +15,33 @@ const schema = z
     email: z
       .string()
       .min(1, { message: "Email is required" })
-      .email("Masukan email yang benar"),
+      .email("Enter the correct email"),
     username: z
       .string()
       .min(6, {
-        message: "Username minimal harus terdiri dari 6 karakter",
+        message: "Username must consist of at least 6 characters",
       })
       .refine((data) => !data.includes(" "), {
-        message: "Username tidak boleh ada spasi",
+        message: "The username cannot contain spaces",
       }),
     password: z
       .string()
       .regex(new RegExp("[0-9]"), {
-        message: "Password harus mengandung angka",
+        message: "The password must contain numbers",
       })
       .min(8, {
-        message: "Password minimal 8 karakter",
+        message: "Password must be at least 8 characters",
       })
       .refine((data) => !data.includes(" "), {
-        message: "Password tidak boleh ada spasi",
+        message: "The password must not contain spaces",
       }),
     confirmPassword: z.string().min(1, {
-      message: "Password konfirmasi harus diisi",
+      message: "Confirmation password must be entered",
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
-    message: "Password tidak cocok",
+    message: "Passwords do not match",
   });
 
 export default function SignUpForm() {
@@ -88,100 +88,91 @@ export default function SignUpForm() {
   };
 
   return (
-    <form action={handleSubmit} className="w-full px-3 pb-3 ">
-      <div className="w-full">
-        <div>
-          <label className="mt-3 mb-1 block text-sm font-bold" htmlFor="email">
+    <form
+      action={handleSubmit}
+      className="w-full px-3  pb-3 text-tiny md:text-xs lg:text-sm"
+    >
+      <div className="w-full pt-4">
+        <div className="grid xl:grid-rows-[1.5rem_1fr_1.5rem] gap-1">
+          <label className=" block font-bold" htmlFor="email">
             Email
           </label>
-          <div className="relative">
-            <input
-              className="peer shadow-lg  block w-full rounded-md border border-black py-[9px] pl-2 outline-none text-sm placeholder:text-gray-800 bg-slate-200"
-              id="email"
-              type="text"
-              name="email"
-              placeholder="Enter your email address"
-            />
-            {error.email && (
-              <h3 className="text-red-700 text-xs font-semibold pl-2">
-                {error.email}
-              </h3>
-            )}
-          </div>
+          <input
+            className="peer shadow-white shadow-xs block w-full rounded-md  bg-background-secondary py-[9px] pl-2 outline-hidden placeholder:text-text-primary"
+            id="email"
+            type="text"
+            name="email"
+            placeholder="Enter your email address"
+          />
+          {error.email && (
+            <span className="text-accent flex items-center font-semibold pl-2">
+              {error.email}
+            </span>
+          )}
         </div>
-        <div>
-          <label className="mt-3 mb-1 block text-sm font-bold " htmlFor="email">
+        <div className="grid xl:grid-rows-[1.5rem_1fr_1.5rem] gap-1">
+          <label className=" block font-bold " htmlFor="email">
             Username
           </label>
-          <div className="relative">
-            <input
-              className="peer shadow-lg  block w-full rounded-md border border-black py-[9px] pl-2 outline-none text-sm placeholder:text-gray-800 bg-slate-200"
-              id="username"
-              type="text"
-              name="username"
-              placeholder="Enter your username"
-            />
-            {error.username && (
-              <h3 className="text-red-700 text-xs font-semibold pl-2">
-                {error.username}
-              </h3>
-            )}
-          </div>
+
+          <input
+            className="peer shadow-white shadow-xs block w-full rounded-md py-[9px] pl-2 outline-hidden placeholder:text-text-primary bg-background-secondary"
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+          />
+          {error.username && (
+            <span className="text-accent flex items-center font-semibold pl-2">
+              {error.username}
+            </span>
+          )}
         </div>
-        <div>
-          <label
-            className="mt-3 mb-1 block text-sm font-bold"
-            htmlFor="password"
-          >
+        <div className="grid xl:grid-rows-[1.5rem_1fr_1.5rem] gap-1">
+          <label className=" block font-bold" htmlFor="password">
             Password
           </label>
-          <div className="relative">
-            <input
-              className="peer shadow-lg  block w-full rounded-md border border-black py-[9px] pl-2 outline-none text-sm placeholder:text-gray-800 bg-slate-200"
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              autoComplete="new-password"
-            />
-            {error.password && (
-              <h3 className="text-red-700 text-xs font-semibold pl-2">
-                {error.password}
-              </h3>
-            )}
-          </div>
+
+          <input
+            className="peer shadow-xs shadow-white  block w-full rounded-md py-[9px] pl-2 outline-hidden placeholder:text-text-primary bg-background-secondary"
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            autoComplete="new-password"
+          />
+          {error.password && (
+            <span className="text-accent flex items-center font-semibold pl-2">
+              {error.password}
+            </span>
+          )}
         </div>
-        <div>
-          <label
-            className="mt-3 mb-1 block text-sm font-bold"
-            htmlFor="confirmPassword"
-          >
+        <div className="grid xl:grid-rows-[1.5rem_1fr_1.5rem] gap-1">
+          <label className=" block font-bold" htmlFor="confirmPassword">
             Confirm Password
           </label>
-          <div className="relative">
-            <input
-              className="peer shadow-lg  block w-full rounded-md border border-black py-[9px] pl-2 outline-none text-sm placeholder:text-gray-800 bg-slate-200"
-              id="confirmPassword"
-              type="password"
-              name="confirmPassword"
-              placeholder="Re-Enter password"
-              autoComplete="new-password"
-            />
-            {error.confirmPassword && (
-              <h3 className="text-red-700 text-xs font-semibold pl-2">
-                {error.confirmPassword}
-              </h3>
-            )}
-          </div>
+          <input
+            className="peer shadow-xs shadow-white  block w-full rounded-md py-[9px] pl-2 outline-hidden placeholder:text-text-primary bg-background-secondary"
+            id="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            placeholder="Re-Enter password"
+            autoComplete="new-password"
+          />
+          {error.confirmPassword && (
+            <span className="text-accent flex items-center font-semibold pl-2">
+              {error.confirmPassword}
+            </span>
+          )}
         </div>
       </div>
-      <div className="flex flex-col items-center w-full gap-1 mt-4">
+      <div className="flex flex-col items-center w-full gap-1 mt-1">
         <SubmitButton title={"Sign In"} />
-        <p className="text-xs font-semibold">
+        <p className="text-tiny md:text-base font-semibold">
           Already have account ? Log In{" "}
           <Link
             href={"/login"}
-            className="text-blue-700 hover:text-blue-950 hover:underline"
+            className="text-accent hover:text-accent-hover hover:underline"
           >
             here
           </Link>

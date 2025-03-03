@@ -5,7 +5,7 @@ export default function MainLayout({ children }) {
   return (
     <section className="bg-background-primary">
       <Navbar />
-      <div className="pt-28 md:pt-16">{children}</div>
+      <div className="pt-28 md:pt-16 min-h-dvh">{children}</div>
       <Footer />
     </section>
   );

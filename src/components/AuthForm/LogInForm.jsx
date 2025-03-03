@@ -18,29 +18,32 @@ export default function LoginForm() {
     });
 
     if (signInData?.error) {
-      toast.error("Email atau Password salah");
+      toast.error("Incorrect email or password", {
+        style: {
+          background: "#0f172a",
+          color: "white",
+        },
+      });
     } else {
       router.push(`/dashboard`);
     }
   };
 
   return (
-    <form action={logIn} className="w-full px-3 pb-3">
+    <form action={logIn} className="w-full h-full px-6 pb-3">
       <div className="w-full">
         <div>
           <label className="mt-3 mb-1 block text-sm font-bold" htmlFor="email">
             Email
           </label>
-          <div className="relative">
-            <input
-              className="peer shadow-lg  block w-full rounded-md border border-black py-[9px] pl-2 outline-none text-sm placeholder:text-gray-800 bg-slate-200"
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Enter your email address"
-              required
-            />
-          </div>
+          <input
+            className="peer 9px shadow-xs block w-full rounded-md shadow-white  py-[9px] pl-2 outline-hidden text-sm placeholder:text-text-primary bg-background-secondary"
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
         </div>
         <div>
           <label
@@ -49,25 +52,23 @@ export default function LoginForm() {
           >
             Password
           </label>
-          <div className="relative">
-            <input
-              className="peer shadow-lg  block w-full rounded-md border border-black py-[9px] pl-2 outline-none text-sm placeholder:text-gray-800 bg-slate-200"
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              required
-            />
-          </div>
+          <input
+            className="peer shadow-xs  block w-full rounded-md shadow-white py-[9px] pl-2 outline-hidden text-sm placeholder:text-text-primary bg-background-secondary"
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            required
+          />
         </div>
       </div>
       <div className="flex flex-col items-center w-full gap-1 mt-4">
         <SubmitButton title={"Log In"} />
-        <p className="text-xs font-semibold">
+        <p className="text-xs md:text-base font-semibold">
           Don't have account Sign Up{" "}
           <Link
             href={"/sign-up"}
-            className="text-blue-700 hover:text-blue-950 hover:underline"
+            className="text-accent hover:text-accent-hover hover:underline"
           >
             here
           </Link>

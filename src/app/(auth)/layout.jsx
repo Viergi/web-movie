@@ -4,7 +4,7 @@ import React from "react";
 
 export default function AuthLayout({ children }) {
   return (
-    <section className="relative flex justify-center items-center h-screen text-shadow-white">
+    <section className="relative flex justify-center items-center h-screen ">
       <Image
         className="w-full h-full object-cover absolute -z-10"
         src={"/background-login-page.webp"}

@@ -13,10 +13,10 @@ const contents = [
   {
     title: "Movies",
     links: [
-      { name: "Genres", path: "/" },
-      { name: "Trending", path: "/" },
-      { name: "New Release", path: "/" },
-      { name: "Popular", path: "/" },
+      { name: "Genres", path: "/genres" },
+      { name: "Trending", path: "/trending" },
+      { name: "Now Playing", path: "/now-playing?page=1" },
+      { name: "Popular", path: "/popular?page=1" },
     ],
   },
   // {

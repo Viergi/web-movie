@@ -25,7 +25,7 @@ export default function NavbarClient({ userLoggedIn }) {
 
   return (
     <nav
-      className={`grid grid-cols-2 md:flex md:flex-row md:justify-between p-4 bg-background-third bg-opacity-80 backdrop-blur-sm md:items-center fixed w-full top-0 z-50 navbar transition-all duration-300 gap-2 md:gap-0
+      className={`grid grid-cols-2 md:flex md:flex-row md:justify-between p-4 bg-background-third/80 backdrop-blur-xs md:items-center fixed w-full top-0 z-50 navbar transition-all duration-300 gap-2 md:gap-0
     ${visible ? "translate-y-0" : "-translate-y-32"}`}
     >
       <Link

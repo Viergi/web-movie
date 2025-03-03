@@ -1,18 +1,7 @@
 // import HeroSection from "@/components/HeroSection";
-// import MovieList from "@/components/MovieList";
+import MovieList from "@/components/MovieList";
 import { getMovieResponse } from "@/libs/fetch";
-
-import dynamic from "next/dynamic";
 import Image from "next/image";
-
-const HeroSection = dynamic(() => import("@/components/HeroSection"), {
-  // ssr: false,
-  // loading:
-});
-const MovieList = dynamic(() => import("@/components/MovieList"), {
-  // ssr: false,
-});
-// const { getMovieResponse } = dynamic(() => import("@/libs/fetch"));
 
 export default async function Home() {
   const responsePopularMovie = await getMovieResponse(

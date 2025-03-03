@@ -24,7 +24,7 @@ export default function Overview({ data, user, alreadyAdd }) {
       );
       toast.success(p.success);
     } else {
-      toast.error("Login terlebih dahulu", {
+      toast.error("Please log in first", {
         style: {
           background: `#0f172a`,
           color: `white`,
@@ -59,13 +59,14 @@ export default function Overview({ data, user, alreadyAdd }) {
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-[25%] md:pl-5 pb-10 md:pb-0 xl:pl-10 ">
           {data.poster_path ? (
-            <Image
-              src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${data.poster_path}`}
-              alt="..."
-              width={500}
-              height={500}
-              className="md:h-80 lg:h-96 md:w-72"
-            ></Image>
+            <div className="md:h-80 lg:h-96">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${data.poster_path}`}
+                alt="..."
+                width={500}
+                height={500}
+              ></Image>
+            </div>
           ) : (
             <div className="md:h-80 lg:h-96 bg-slate-300 flex justify-center items-center ">
               <ImageSquare size={32} color="black" weight="fill" />

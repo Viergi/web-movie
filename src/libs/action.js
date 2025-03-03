@@ -44,13 +44,12 @@ export async function createUser(formData) {
   const existingEmail = await db.user.findUnique({
     where: { email: email },
   });
-  if (existingEmail) return { error: "Email telah digunakan", status: 409 };
+  if (existingEmail) return { error: "Email has been used", status: 409 };
 
   const existingUsername = await db.user.findUnique({
     where: { username: username },
   });
-  if (existingUsername)
-    return { error: "Username telah digunakan", status: 409 };
+  if (existingUsername) return { error: "Username has been used", status: 409 };
 
   console.log(hashedPassword);
   const newUser = await db.user.create({
@@ -61,7 +60,7 @@ export async function createUser(formData) {
     },
   });
 
-  return { succes: "Berhasil membuat akun" };
+  return { succes: "Successfully created an account" };
 }
 
 export async function addToFavorite(
@@ -84,7 +83,7 @@ export async function addToFavorite(
   });
   revalidatePath(`/movie/${movie_id}`);
   return {
-    success: "Berhasil menambahkan",
+    success: "Added successfully",
   };
 }
 
@@ -97,7 +96,7 @@ export async function deleteFromFavorite(movie_id, user_email) {
 
   revalidatePath(`/movie/${movie_id}`);
   return {
-    success: "Berhasil menghapus",
+    success: "Successfully deleted",
   };
 }
 
@@ -120,6 +119,6 @@ export async function addComment(
 
   revalidatePath("/movie/movie_id");
   return {
-    success: "Berhasil Comment",
+    success: "Comment successful",
   };
 }

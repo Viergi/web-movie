@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function HeroSection({ severalPopularFilms }) {
   return (
-    <div className="flex relative md:h-full h-40 w-full z-[2] overflow-hidden">
+    <div className="flex relative md:h-full h-40 w-full z-2 overflow-hidden">
       <Splide
         aria-label="My Favorite Images"
         className="w-full h-full"
@@ -21,7 +21,7 @@ export default function HeroSection({ severalPopularFilms }) {
             <SplideSlide key={index}>
               <Link
                 href={`/movie/${item.id}`}
-                className="flex relative md:h-full h-40 w-full z-[2] overflow-hidden"
+                className="flex relative md:h-full h-40 w-full z-2 overflow-hidden"
               >
                 <Image
                   width={500}
@@ -30,7 +30,7 @@ export default function HeroSection({ severalPopularFilms }) {
                   alt="Image 1"
                   priority
                 />
-                <h1 className="absolute bottom-5 md:bottom-[20%] lg:top-[55%] z-[3] text-white left-2 md:left-10 font-bold text-sm md:text-[1.5rem] lg:text-[3rem] text-shadow">
+                <h1 className="absolute bottom-5 md:bottom-[20%] lg:top-[55%] z-3 text-white left-2 md:left-10 font-bold text-sm md:text-[1.5rem] lg:text-[3rem] text-shadow">
                   {item.title}
                 </h1>
               </Link>
