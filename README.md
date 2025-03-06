@@ -42,6 +42,7 @@ NEXT_PUBLIC_API_BASE_URL=https://api.themoviedb.org/3
 NEXT_PUBLIC_API_IMAGE_URL=https://image.tmdb.org/t/p/original
 NEXT_PUBLIC_API_IMAGE_URL_CARD=https://image.tmdb.org/t/p/w500
 NEXT_PUBLIC_API_KEY=your_tmdb_api_key
+AUTH_URL=your.domain.com//development use http://localhost:3000
 NEXTAUTH_SECRET=your_secret_key
 DATABASE_URL=your_link_database
 DIRECT_URL=your_direct_link_database
