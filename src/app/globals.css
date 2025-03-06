@@ -105,11 +105,11 @@ img {
   scrollbar-width: none;
 }
 
-.b::-webkit-scrollbar {
+.scroll-genres::-webkit-scrollbar {
   height: 5px;
 }
 
-.b::-webkit-scrollbar-thumb {
+.scroll-genres::-webkit-scrollbar-thumb {
   background: #000;
 }
 

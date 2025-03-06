@@ -51,7 +51,6 @@ export async function createUser(formData) {
   });
   if (existingUsername) return { error: "Username has been used", status: 409 };
 
-  console.log(hashedPassword);
   const newUser = await db.user.create({
     data: {
       email,
@@ -117,7 +116,7 @@ export async function addComment(
     },
   });
 
-  revalidatePath("/movie/movie_id");
+  revalidatePath(`/movie/${movie_id}`);
   return {
     success: "Comment successful",
   };

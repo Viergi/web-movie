@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FilmVista
 
-## Getting Started
+FilmVista adalah aplikasi web berbasis **Next.js 15** yang menampilkan informasi film menggunakan **TMDB API**. Aplikasi ini dilengkapi dengan berbagai fitur, termasuk sistem autentikasi menggunakan **NextAuth**.
 
-First, run the development server:
+## 🚀 Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔍 Pencarian film dan detail lengkap
+- 🏆 Daftar film populer, terbaru, dan trending
+- ⭐ Favorit dan watchlist pengguna
+- 🔐 Autentikasi dengan **NextAuth**
+- 🎭 Kategori dan genre untuk eksplorasi lebih lanjut
+
+## 🛠️ Teknologi yang Digunakan
+
+- **Next.js 15** - Framework React modern yang mendukung rendering sisi server dan klien
+- **TMDB API** - Sumber data utama untuk informasi film dan serial televisi
+- **NextAuth.js** - Sistem autentikasi yang fleksibel dengan berbagai penyedia login
+- **Tailwind CSS** - Framework CSS yang memungkinkan pengembangan UI yang cepat dan responsif
+- **Vercel** - Platform hosting yang dioptimalkan untuk aplikasi Next.js
+
+## 📦 Instalasi & Menjalankan Proyek
+
+### 1️⃣ Clone repository
+
+```sh
+git clone https://github.com/Viergi/web-movie.git
+cd FilmVista
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Instal dependensi
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3️⃣ Konfigurasi lingkungan
 
-## Learn More
+Buat file `.env.local` dan tambahkan:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_API_BASE_URL=https://api.themoviedb.org/3
+NEXT_PUBLIC_API_IMAGE_URL=https://image.tmdb.org/t/p/original
+NEXT_PUBLIC_API_IMAGE_URL_CARD=https://image.tmdb.org/t/p/w500
+NEXT_PUBLIC_API_KEY=your_tmdb_api_key
+NEXTAUTH_SECRET=your_secret_key
+DATABASE_URL=your_link_database
+DIRECT_URL=your_direct_link_database
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4️⃣ Jalankan proyek
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+npm run dev
+```
 
-## Deploy on Vercel
+Akses **http://localhost:3000** di browser Anda.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 Lisensi
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Hak Cipta © 2025 Viergi. Dirilis di bawah Lisensi MIT.
+
+---
+
+🎬 Dikembangkan oleh Viergi

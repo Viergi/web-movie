@@ -5,7 +5,6 @@ import { auth } from "@/auth";
 import { getServerSession } from "next-auth";
 
 export async function getCurrentUser() {
-  // const session = await getServerSession(authOptions);
-  const session2 = await auth();
-  return session2?.user;
+  const session = await auth();
+  return session?.user;
 }

@@ -19,15 +19,6 @@ const contents = [
       { name: "Popular", path: "/popular?page=1" },
     ],
   },
-  // {
-  //   title: "Shows",
-  //   links: [
-  //     { name: "Genres", path: "/" },
-  //     { name: "Trending", path: "/" },
-  //     { name: "New Release", path: "/" },
-  //     { name: "Popular", path: "/" },
-  //   ],
-  // },
   {
     title: "Support",
     links: [{ name: "Contact Us", path: "/" }],
@@ -82,7 +73,7 @@ export default function Footer() {
       </div>
       <div className="w-full px-3 flex flex-col gap-2 md:flex-row md:justify-between p-2 xl:w-4/5 xl:py-8 text-text-secondary">
         <span className="text-xs xl:text-base">
-          &copy; 2025 FilmVista, All Right Reserved
+          &copy; 2025 Viergi, All Right Reserved
         </span>
         <div className="text-xs xl:text-base grid grid-cols-3 w-full text-center md:w-2/5">
           <span>

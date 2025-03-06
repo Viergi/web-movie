@@ -46,7 +46,7 @@ import { NextResponse } from "next/server";
 // List of routes that require authentication
 const protectedRoutes = ["/dashboard"];
 
-console.log(protectedRoutes);
+// console.log(protectedRoutes);
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;

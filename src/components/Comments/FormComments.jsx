@@ -34,7 +34,14 @@ export default function FormComments({ user, movieId, title }) {
     }
 
     ref.current?.reset();
-    await addComment(user.email, title, movieId, comment, user.username);
+    const addCommentResponse = await addComment(
+      user.email,
+      title,
+      movieId,
+      comment,
+      user.username
+    );
+    toast.success(addCommentResponse.success);
   };
 
   return (
