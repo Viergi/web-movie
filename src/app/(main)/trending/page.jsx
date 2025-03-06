@@ -1,22 +1,23 @@
+// "use client";
+
 import MovieList from "@/components/MovieList";
 import Pagination from "@/components/Utilities/Pagination";
 import { getMovieResponse } from "@/libs/fetch";
+// import { usePathname, useRouter, useSearchParams } from "next/navigation";
+// import { useCallback, useEffect, useState } from "react";
 
-export default async function Page(props) {
-  const searchParams = await props.searchParams;
-  const page = searchParams?.page || 1;
+export default async function Page() {
   const responsePopularMovie = await getMovieResponse(
-    "movie/top_rated",
-    `language=en-US&page=${page}`
+    "trending/movie/week",
+    `language=en-US`
   );
 
   return (
     <div className="p-4">
       <MovieList
         response={responsePopularMovie.results}
-        title={"Top Rated Movie"}
+        title={"Trending Movie"}
       />
-      <Pagination page={page} lastpage={responsePopularMovie.total_pages} />
     </div>
   );
 }

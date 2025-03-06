@@ -1,4 +1,4 @@
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 import { getCurrentUser } from "@/libs/getUser";
 import Link from "next/link";
 
@@ -11,15 +11,15 @@ export default async function Page() {
   });
 
   return (
-    <div className="w-full">
-      <div className="flex items-center justify-between px-6 py-4">
+    <div className="w-full min-h-screen md:pt-12">
+      <div className="flex items-center justify-between px-4 md:px-8 lg:px-10 xl:px-24 py-8 lg:pb-10">
         <h1 className="text-white text-md md:text-xl font-bold">My Comment</h1>
         <Link href={"/dashboard"} className="text-white mr-2">
           Back
         </Link>
       </div>
       {commentList.length > 0 ? (
-        <div className="flex flex-col pb-8 gap-x-1 md:px-8 lg:px-10 xl:px-24 gap-y-4 gap-1 text-white">
+        <div className="flex flex-col pb-8 gap-x-1 px-4 md:px-8 lg:px-10 xl:px-24 gap-y-4 gap-1 text-white">
           {commentList.slice(0, 5).map((data, index) => {
             return (
               <Link

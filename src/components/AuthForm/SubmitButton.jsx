@@ -9,8 +9,8 @@ export default function SubmitButton({ title }) {
   return (
     <button
       className={`${
-        pending ? "bg-blue-800 text-white/40" : null
-      } px-10 py-2 bg-blue-600 rounded-lg w-full hover:bg-blue-800 hover:text-white/40 flex gap-2 justify-center items-center`}
+        pending && "bg-accent text-white/40"
+      } px-10 py-2 bg-accent rounded-lg w-full hover:bg-accent-hover hover:text-white/60 flex gap-2 justify-center items-center`}
       aria-disabled={pending}
       disabled={pending}
     >

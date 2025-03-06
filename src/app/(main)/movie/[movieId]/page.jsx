@@ -1,11 +1,11 @@
 import { getMovieResponse } from "@/libs/fetch";
 import DetailMovie from "@/components/DetailMovie";
 import MovieList from "@/components/MovieList";
-import CommentSection from "@/components/CommentSection";
+import Comments from "@/components/Comments";
 
-export default async function Page({ params }) {
+export default async function Page(props) {
+  const params = await props.params;
   const { movieId } = params;
-
   const responseDetailMovie = await getMovieResponse(
     `movie/${movieId}`,
     "language=en-US"
@@ -22,11 +22,11 @@ export default async function Page({ params }) {
     "movie/top_rated",
     "language=en-US&page=1"
   );
-
+  // console.log(responseSimilarMovie);
   return (
-    <div>
+    <div className="pt-4">
       <DetailMovie data={responseDetailMovie} />
-      <CommentSection movieId={movieId} title={responseDetailMovie.title} />
+      <Comments movieId={movieId} title={responseDetailMovie.title} />
       {responseSimilarMovie.results.length > 1 ? (
         <MovieList
           response={responseSimilarMovie.results.slice(0, 5)}

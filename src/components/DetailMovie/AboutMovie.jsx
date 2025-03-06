@@ -40,10 +40,9 @@ export default function AboutMovie({
                 ? "Not Known"
                 : // productionCountries[0].name
                   productionCountries.map((country, index, row) => {
-                    if (index + 1 === row.length) {
-                      return country.name;
-                    }
-                    return `${country.name}, `;
+                    return `${country.name}${
+                      index !== productionCountries.length - 1 ? ", " : ""
+                    }`;
                   })}
             </p>
           </div>
@@ -54,11 +53,10 @@ export default function AboutMovie({
             <p className="lg:w-1/2">
               {productionCompanies[0] == null
                 ? "Not Known"
-                : productionCompanies.map((company, index, row) => {
-                    if (index + 1 === row.length) {
-                      return company.name;
-                    }
-                    return `${company.name}, `;
+                : productionCompanies.map((company, index) => {
+                    return `${company.name}${
+                      index !== productionCompanies.length - 1 ? ", " : ""
+                    }`;
                   })}
             </p>
           </div>

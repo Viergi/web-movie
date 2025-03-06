@@ -8,7 +8,9 @@ export default function Rating({ voteAverage, voteCount }) {
   let jumlahBintang = [0, 0, 0, 0, 0];
   let bintang = [0, 0, 0, 0, 0];
 
-  if (Rating < 3) {
+  if (Rating == 0) {
+    jumlahBintang.splice(0, 5);
+  } else if (Rating < 3) {
     jumlahBintang.splice(0, 4);
     bintang.splice(0, 1);
   } else if (Rating < 6 && Rating >= 3) {

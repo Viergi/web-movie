@@ -27,7 +27,7 @@ export default function AccountDetail({ user }) {
             callbackUrl: "/",
           });
         }}
-        className="text-white hover:text-slate-800 px-2 py-1 md:px-4 md:py-2 bg-black rounded-lg border"
+        className="text-white hover:bg-accent-hover bg-accent px-2 py-1 md:px-4 md:py-2 rounded-lg"
       >
         Log out
       </button>

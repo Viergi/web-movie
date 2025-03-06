@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 import Image from "next/image";
 import GenreMovie from "./GenreMovie";
 
@@ -51,6 +51,7 @@ export default async function FavoriteMovie({ user }) {
                         width={350}
                         height={350}
                         className="h-[80%] rounded-lg object-fill bg-slate-600"
+                        priority={true}
                       ></Image>
                     ) : (
                       <div className="flex justify-center items-center h-[80%] rounded-lg bg-slate-600">

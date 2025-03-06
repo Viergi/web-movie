@@ -2,9 +2,10 @@
 
 import { signIn } from "next-auth/react";
 import { AuthError } from "next-auth";
-import { db } from "./db";
+import { db } from "./prisma";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import bcrypt from "bcryptjs";
 
 // export async function authenticate(prevState, formData) {
 //   try {
@@ -22,31 +23,43 @@ import { revalidatePath } from "next/cache";
 //   }
 // }
 
+//hash password
+export async function hashPassword(password) {
+  const saltRounds = 10;
+  const hashedPassword = await bcrypt.hash(password, saltRounds);
+  return hashedPassword;
+}
+
+//verify password with bcrypt compare
+export async function verifyPassword(plainPassword, hashedPassword) {
+  return await bcrypt.compare(plainPassword, hashedPassword);
+}
+
 export async function createUser(formData) {
   const email = formData?.get("email");
   const username = formData?.get("username");
   const password = formData?.get("password");
+  const hashedPassword = await hashPassword(password);
 
   const existingEmail = await db.user.findUnique({
     where: { email: email },
   });
-  if (existingEmail) return { error: "Email telah digunakan", status: 409 };
+  if (existingEmail) return { error: "Email has been used", status: 409 };
 
   const existingUsername = await db.user.findUnique({
     where: { username: username },
   });
-  if (existingUsername)
-    return { error: "Username telah digunakan", status: 409 };
+  if (existingUsername) return { error: "Username has been used", status: 409 };
 
   const newUser = await db.user.create({
     data: {
       email,
       username,
-      password,
+      password: hashedPassword,
     },
   });
 
-  return { succes: "Berhasil membuat akun" };
+  return { succes: "Successfully created an account" };
 }
 
 export async function addToFavorite(
@@ -69,7 +82,7 @@ export async function addToFavorite(
   });
   revalidatePath(`/movie/${movie_id}`);
   return {
-    success: "Berhasil menambahkan",
+    success: "Added successfully",
   };
 }
 
@@ -82,7 +95,7 @@ export async function deleteFromFavorite(movie_id, user_email) {
 
   revalidatePath(`/movie/${movie_id}`);
   return {
-    success: "Berhasil menghapus",
+    success: "Successfully deleted",
   };
 }
 
@@ -103,8 +116,8 @@ export async function addComment(
     },
   });
 
-  revalidatePath("/movie/movie_id");
+  revalidatePath(`/movie/${movie_id}`);
   return {
-    success: "Berhasil Comment",
+    success: "Comment successful",
   };
 }

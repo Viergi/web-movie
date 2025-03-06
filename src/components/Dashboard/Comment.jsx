@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { db } from "@/libs/db";
+import { db } from "@/libs/prisma";
 
 export default async function Comment({ user }) {
   const commentList = await db.comment.findMany({
@@ -9,7 +9,7 @@ export default async function Comment({ user }) {
   });
 
   return (
-    <>
+    <div className="pt-8">
       <Link href="dashboard/comment" className="text-xl mt-2 text-white mb-4">
         Comment
       </Link>
@@ -48,6 +48,6 @@ export default async function Comment({ user }) {
           </h1>
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 // export { default } from "next-auth/middleware";
 // import { withAuth } from "next-auth/middleware";
 // import { NextResponse } from "next/server";
-export { default } from "next-auth/middleware";
+// export { default } from "next-auth/middleware";
 
 // This function can be marked `async` if using `await` inside
 // export async function middleware(request) {
@@ -35,6 +35,34 @@ export { default } from "next-auth/middleware";
 //   }
 // );
 
+// ! awalnya gini
+// !export const config = {
+// ! matcher: ["/dashboard/:path*"],
+// !};
+
+import { auth } from "@/auth";
+import { NextResponse } from "next/server";
+
+// List of routes that require authentication
+const protectedRoutes = ["/dashboard"];
+
+// console.log(protectedRoutes);
+
+export default auth((req) => {
+  const isLoggedIn = !!req.auth;
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    req.nextUrl.pathname.startsWith(route)
+  );
+
+  if (isProtectedRoute && !isLoggedIn) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  // Allow the request to proceed
+  return NextResponse.next();
+});
+
+// This line configures which routes the middleware should run on
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

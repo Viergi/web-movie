@@ -14,7 +14,7 @@ export default function FormComments({ user, movieId, title }) {
   const ref = useRef(null);
   const postComment = async (formData) => {
     if (!user) {
-      toast.error("Silahkan login terlebih dahulu", {
+      toast.error("Please log in first", {
         style: {
           background: `#0f172a`,
           color: `white`,
@@ -34,7 +34,14 @@ export default function FormComments({ user, movieId, title }) {
     }
 
     ref.current?.reset();
-    await addComment(user.email, title, movieId, comment, user.username);
+    const addCommentResponse = await addComment(
+      user.email,
+      title,
+      movieId,
+      comment,
+      user.username
+    );
+    toast.success(addCommentResponse.success);
   };
 
   return (
@@ -44,7 +51,7 @@ export default function FormComments({ user, movieId, title }) {
         autoComplete="off"
         name="comment"
         type="text"
-        className="w-full h-10 pl-3 text-gray-200 placeholder:text-gray-600 border outline-none bg-slate-950"
+        className="w-full h-10 pl-3 text-gray-200 placeholder:text-gray-600 border outline-hidden bg-background-primary"
       />
       {error && (
         <h3 className="text-red-700 text-xs font-semibold pl-2">{error}</h3>
