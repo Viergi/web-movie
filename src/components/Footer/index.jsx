@@ -58,6 +58,7 @@ export default function Footer() {
                       className="text-text-secondary text-sm xl:text-base h-[30px] py-2 pl-0 "
                     >
                       <Link
+                        scroll={true}
                         href={link.path}
                         className="h-full inline-flex text-xs md:text-sm items-center hover:text-text-primary"
                       >
