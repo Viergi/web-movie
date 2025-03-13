@@ -3,8 +3,31 @@
 import { ImageSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Card({ title, imageURL, id, releaseDate, genre }) {
+  const [filteredGenres, setFilteredGenres] = useState([]);
+
+  useEffect(() => {
+    const updateGenres = () => {
+      if (typeof window !== "undefined" && window.innerWidth > 320) {
+        setFilteredGenres(
+          genre
+            .slice(0, 2)
+            .map((item, index, row) =>
+              index + 1 === row.length ? item : `${item}, `
+            )
+        );
+      } else {
+        setFilteredGenres([]);
+      }
+    };
+
+    updateGenres(); // Initial call
+    window.addEventListener("resize", updateGenres);
+    return () => window.removeEventListener("resize", updateGenres);
+  }, [genre]);
+
   return (
     <Link
       scroll={true}
@@ -28,20 +51,7 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
       <h1 className="font-bold truncate pt-2 w-[80%] text-white">{title}</h1>
       <h2 className="font-bold text-[0.7rem] w-full text-gray-400 flex justify-between">
         <span>{releaseDate.slice(0, 4)}</span>
-        <span>
-          {genre.slice(0, 2).map((genre, index, row) => {
-            if (typeof window == "undefined") return;
-
-            if (window.innerWidth <= 320) {
-              return;
-            } else {
-              if (index + 1 == row.length) {
-                return genre;
-              }
-              return `${genre}, `;
-            }
-          })}
-        </span>
+        <span>{filteredGenres}</span>
       </h2>
     </Link>
   );
