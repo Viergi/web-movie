@@ -14,7 +14,7 @@ export default async function Page({ params, searchParams }) {
   const genre = await genres.find((genre) => genre.name == decodedSlug);
   const responseGenresMovie = await getMovieResponse(
     `discover/movie`,
-    `include_adult=true&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genre.id}`
+    `include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genre.id}`
   );
   return (
     <div className="pb-10">
