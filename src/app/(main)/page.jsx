@@ -42,6 +42,7 @@ export default async function Home() {
           height={500}
           src={"/background-web-movie1.jpg"}
           alt="..."
+          unoptimized
         ></Image>
         {/* <img
           fetchPriority="high"

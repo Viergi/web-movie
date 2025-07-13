@@ -41,6 +41,7 @@ export default async function Page() {
                       width={350}
                       height={350}
                       className="h-[80%] rounded-lg object-fill bg-slate-600"
+                      unoptimized
                     ></Image>
                   ) : (
                     <div className="flex justify-center items-center h-[80%] rounded-lg bg-slate-600">

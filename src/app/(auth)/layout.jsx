@@ -12,6 +12,7 @@ export default function AuthLayout({ children }) {
         height={500}
         alt="..."
         priority={true}
+        unoptimized
       />
       {children}
     </section>

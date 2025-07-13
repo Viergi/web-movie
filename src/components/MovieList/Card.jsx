@@ -41,6 +41,7 @@ export default function Card({ title, imageURL, id, releaseDate, genre }) {
           height={500}
           width={500}
           className="h-[80%] rounded-lg object-fill bg-slate-600"
+          unoptimized
         ></Image>
       ) : (
         <div className="flex justify-center items-center h-full rounded-lg bg-slate-600">

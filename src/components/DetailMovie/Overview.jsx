@@ -65,6 +65,7 @@ export default function Overview({ data, user, alreadyAdd }) {
                 alt="..."
                 width={500}
                 height={500}
+                unoptimized
               ></Image>
             </div>
           ) : (

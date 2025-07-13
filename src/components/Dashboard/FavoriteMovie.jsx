@@ -52,6 +52,7 @@ export default async function FavoriteMovie({ user }) {
                         height={350}
                         className="h-[80%] rounded-lg object-fill bg-slate-600"
                         priority={true}
+                        unoptimized
                       ></Image>
                     ) : (
                       <div className="flex justify-center items-center h-[80%] rounded-lg bg-slate-600">

@@ -14,6 +14,7 @@ export default function AccountDetail({ user }) {
             width={200}
             height={200}
             className="rounded-full h-32 w-32"
+            unoptimized
           ></Image>
         ) : (
           <UserCircle color="#d4d3d5" className="text-5xl md:text-9xl" />

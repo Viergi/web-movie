@@ -29,6 +29,7 @@ export default function HeroSection({ severalPopularFilms }) {
                   src={`${process.env.NEXT_PUBLIC_API_IMAGE_URL}${item.backdrop_path}`}
                   alt="Image 1"
                   priority
+                  unoptimized
                 />
                 <h1 className="absolute bottom-5 md:bottom-[20%] lg:top-[55%] z-3 text-white left-2 md:left-10 font-bold text-sm md:text-[1.5rem] lg:text-[3rem] text-shadow">
                   {item.title}

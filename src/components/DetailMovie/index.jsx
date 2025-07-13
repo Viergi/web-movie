@@ -24,6 +24,7 @@ export default async function DetailMovie({ data }) {
           loading="eager"
           priority
           className="absolute top-0 -z-10 object-cover object-[100%_30%] "
+          unoptimized
         />
       ) : (
         <div className="absolute -z-10 left-0 top-0 w-full h-full flex  items-center bg-slate-950">
